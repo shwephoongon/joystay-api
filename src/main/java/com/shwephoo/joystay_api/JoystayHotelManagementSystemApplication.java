@@ -1,0 +1,13 @@
+package com.shwephoo.joystay_api;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class JoystayHotelManagementSystemApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(JoystayHotelManagementSystemApplication.class, args);
+	}
+
+}
