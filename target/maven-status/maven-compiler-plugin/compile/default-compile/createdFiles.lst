@@ -1,0 +1,5 @@
+com\shwephoo\joystay_api\service\HotelService.class
+com\shwephoo\joystay_api\repository\HotelRepository.class
+com\shwephoo\joystay_api\controller\HotelController.class
+com\shwephoo\joystay_api\entity\Hotel.class
+com\shwephoo\joystay_api\JoystayHotelManagementSystemApplication.class
