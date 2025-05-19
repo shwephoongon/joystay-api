@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.shwephoo.joystay_api.JoystayHotelManagementSystemApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 63.76 s -- in com.shwephoo.joystay_api.JoystayHotelManagementSystemApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 7.485 s -- in com.shwephoo.joystay_api.JoystayHotelManagementSystemApplicationTests

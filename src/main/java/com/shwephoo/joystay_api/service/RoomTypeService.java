@@ -1,5 +1,6 @@
 package com.shwephoo.joystay_api.service;
 
+import com.shwephoo.joystay_api.dto.DefaultResponseDto;
 import com.shwephoo.joystay_api.entity.RoomType;
 import com.shwephoo.joystay_api.exception.RoomTypeNotFoundException;
 import com.shwephoo.joystay_api.repository.RoomTypeRepository;
@@ -28,6 +29,9 @@ public class RoomTypeService {
 
         existingRoomType.setName(roomType.getName());
         existingRoomType.setPricePerNight(roomType.getPricePerNight());
+        existingRoomType.setDescription(roomType.getDescription());
+        existingRoomType.setCapacity(roomType.getCapacity());
+        existingRoomType.setBedType(roomType.getBedType());
 
         return roomTypeRepository.save(existingRoomType);
     }

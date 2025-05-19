@@ -1,5 +1,6 @@
 package com.shwephoo.joystay_api.controller;
 
+import com.shwephoo.joystay_api.dto.DefaultResponseDto;
 import com.shwephoo.joystay_api.entity.Hotel;
 import com.shwephoo.joystay_api.entity.RoomType;
 import com.shwephoo.joystay_api.service.RoomTypeService;
@@ -30,10 +31,12 @@ public class RoomTypeController {
         List<RoomType> roomTypeList = roomTypeService.getRoomTypeList();
         return ResponseEntity.ok(roomTypeList);
     }
+
     @PutMapping("/room-types/{id}")
-    public ResponseEntity<RoomType> updateRoomType(@PathVariable("id") Long id, @RequestBody RoomType roomType) {
+    public ResponseEntity<DefaultResponseDto<RoomType>> updateRoomType(@PathVariable Long id, @RequestBody RoomType roomType) {
         RoomType updatedRoomType = roomTypeService.updateRoomType(id, roomType);
-        return ResponseEntity.ok(updatedRoomType);
+        DefaultResponseDto<RoomType> response = new DefaultResponseDto<>("success", updatedRoomType);
+        return ResponseEntity.ok(response);
     }
 
     @DeleteMapping("/room-types/{id}")
