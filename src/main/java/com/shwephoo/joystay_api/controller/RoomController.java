@@ -1,18 +1,15 @@
 package com.shwephoo.joystay_api.controller;
 
+import com.shwephoo.joystay_api.dto.DefaultResponseDto;
+import com.shwephoo.joystay_api.dto.ResponseWithPageDto;
 import com.shwephoo.joystay_api.dto.RoomRequestDto;
 import com.shwephoo.joystay_api.dto.RoomResponseDto;
 import com.shwephoo.joystay_api.entity.Room;
-import com.shwephoo.joystay_api.entity.RoomType;
 import com.shwephoo.joystay_api.service.RoomService;
-import com.shwephoo.joystay_api.service.RoomTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1")
@@ -25,8 +22,18 @@ public class RoomController {
     }
 
     @PostMapping("/rooms")
-    public ResponseEntity<RoomResponseDto> addRoomType(@RequestBody RoomRequestDto roomRequestDto) {
+    public ResponseEntity<DefaultResponseDto<RoomResponseDto>> addRoomType(@RequestBody RoomRequestDto roomRequestDto) {
         RoomResponseDto addedRoom = roomService.addRoom(roomRequestDto);
-        return ResponseEntity.status(HttpStatus.CREATED).body(addedRoom);
+        DefaultResponseDto<RoomResponseDto> response = new DefaultResponseDto<>("success", addedRoom);
+        return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/rooms")
+    public ResponseWithPageDto<Room> getAllRooms(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size,
+            @RequestParam(defaultValue = "id") String sortBy
+    ) {
+        return roomService.getAllRooms(page, size, sortBy);
     }
 }

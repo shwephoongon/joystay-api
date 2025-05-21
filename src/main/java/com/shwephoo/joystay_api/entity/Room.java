@@ -1,5 +1,6 @@
 package com.shwephoo.joystay_api.entity;
 
+import com.shwephoo.joystay_api.enums.RoomStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,7 +17,8 @@ public class Room {
     private Long id;
     private String roomCode;
     private int floor;
-    private int status;
+    @Enumerated(EnumType.STRING) // or EnumType.ORDINAL if you prefer numbers
+    private RoomStatus status;
 
     @ManyToOne
     @JoinColumn(name = "room_type_id", nullable = false)

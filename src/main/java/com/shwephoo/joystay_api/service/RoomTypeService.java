@@ -2,7 +2,7 @@ package com.shwephoo.joystay_api.service;
 
 import com.shwephoo.joystay_api.dto.DefaultResponseDto;
 import com.shwephoo.joystay_api.entity.RoomType;
-import com.shwephoo.joystay_api.exception.RoomTypeNotFoundException;
+import com.shwephoo.joystay_api.exception.ResourceNotFoundException;
 import com.shwephoo.joystay_api.repository.RoomTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,7 +25,7 @@ public class RoomTypeService {
 
     public RoomType updateRoomType(Long id, RoomType roomType) {
         RoomType existingRoomType = roomTypeRepository.findById(id)
-                .orElseThrow(() -> new RoomTypeNotFoundException("RoomType not found with id: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Not found","RoomType not found with id: " + id));
 
         existingRoomType.setName(roomType.getName());
         existingRoomType.setPricePerNight(roomType.getPricePerNight());
@@ -39,7 +39,7 @@ public class RoomTypeService {
 
     public void deleteRoomType (Long id){
         RoomType roomType = roomTypeRepository.findById(id)
-                .orElseThrow(() -> new RoomTypeNotFoundException("RoomType not found with id: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Not found","RoomType not found with id: " + id));
         roomTypeRepository.delete(roomType);
     }
 }
