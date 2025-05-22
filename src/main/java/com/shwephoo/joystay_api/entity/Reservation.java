@@ -13,16 +13,23 @@ import java.time.LocalDateTime;
 public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
-    LocalDateTime checkin;
-    int duration;
-    LocalDateTime checkout;
+    private Long id;
+
+    private LocalDateTime checkin;
+
+    private int duration;
+
+    private LocalDateTime checkout;
+
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "room_type_id")
-    RoomType roomType;
-    int numberOfGuests;
-    ReservationStatus status;
+    private RoomType roomType;
+
+    private int numberOfGuests;
+
+    private ReservationStatus status;
+
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "guest_id")
-    Guest guestDetails;
+    private Guest guestDetails;
 }

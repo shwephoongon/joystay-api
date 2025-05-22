@@ -15,12 +15,13 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/v1")
 public class RoomTypeController {
-    private final RoomTypeService roomTypeService;
+  //  private final RoomTypeService roomTypeService;
 
     @Autowired
-    public RoomTypeController (RoomTypeService roomTypeService){
-        this.roomTypeService = roomTypeService;
-    }
+    private RoomTypeService roomTypeService;
+//    public RoomTypeController (RoomTypeService roomTypeService){
+//        this.roomTypeService = roomTypeService;
+//    }
     @PostMapping("/room-types")
     public ResponseEntity<RoomType> addRoomType(@RequestBody RoomType roomType) {
         RoomType addedRoomType = roomTypeService.addRoomType(roomType);
